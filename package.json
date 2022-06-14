@@ -1,8 +1,13 @@
 {
   "name": "jwks.keygen",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "index.js",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AppacYazilim/jwks.keygen.git"
+  },
+  "homepage": "https://github.com/AppacYazilim/jwks.keygen#readme",
   "devDependencies": {
     "@babel/core": "^7.18.5",
     "@types/inquirer": "^8.2.1",
