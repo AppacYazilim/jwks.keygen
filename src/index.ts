@@ -2,10 +2,10 @@ import inquirer from 'inquirer';
 
 import { createSpinner } from 'nanospinner';
 
-import * as jose from "jose";
-import { v4 } from "uuid";
 import fs from "fs";
+import * as jose from "jose";
 import fetch from 'node-fetch';
+import { v4 } from "uuid";
 
 
 
@@ -47,9 +47,12 @@ async function main() {
     return null;
   });
 
+  let skipJwks = false;
+
   if (!result) {
     spinner.error({ text: 'Failed to fetch JWKS' });
   } else if (result.status !== 200) {
+    skipJwks = true;
     spinner.error({ text: `The url ${url} returned the status code ${result.status}` });
   }
 
@@ -57,7 +60,7 @@ async function main() {
     keys: []
   };
 
-  if (result) {
+  if (result && !skipJwks) {
 
     try {
       const jwks = await result.json();
